@@ -30,5 +30,18 @@ pipeline {
                 }
             }
         }
+        
+        stage("Installation") {
+            steps{ 
+                sh "node -v"
+                sh "npm install"                
+            }
+        }
+
+        stage("Test") {
+            steps {
+                sh "npm test"
+            }
+        }
 	}	
 }
