@@ -32,16 +32,17 @@ pipeline {
         }
         
         stage("Installation") {
-              agent {
-                    docker {
-                        image 'node:6.20.0-alpine'
-                        args '-p 5010:3000'
-                    }
+            agent {
+                docker {
+                    image 'node:6.20.0-alpine'
+                    args '-p 5010:3000'
                 }
+            }
             steps{ 
                 sh "node -v"
                 sh "npm install"                
             }
         }       
+
 	}	
 }
