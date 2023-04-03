@@ -31,12 +31,12 @@ pipeline {
             }
         }
         
-        stage("Installation") {            
-            steps{ 
-                sh "node -v"
-                sh "npm install"                
-            }
-        }       
+        stage("Installation") {
+			steps {
+				sh "node -v"								
+				sh "npm install"
+			}			
+		}  
 
 	}	
 }
