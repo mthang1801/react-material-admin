@@ -34,7 +34,7 @@ pipeline {
         stage("Installation") {
             agent {
                 docker {
-                    image 'node:6.20.0-alpine'
+                    image 'node:16.20.0-alpine'
                     args '-p 5010:3000'
                 }
             }
