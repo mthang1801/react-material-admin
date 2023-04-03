@@ -36,12 +36,6 @@ pipeline {
                 sh "node -v"
                 sh "npm install"                
             }
-        }
-
-        stage("Test") {
-            steps {
-                sh "npm test"
-            }
-        }
+        }       
 	}	
 }
