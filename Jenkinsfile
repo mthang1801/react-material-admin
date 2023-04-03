@@ -5,10 +5,9 @@ def getBranchName(){
 }
 
 pipeline {
-	agent {
-        docker {
-            image 'node:6-alpine'
-        }
+	agent any 
+    tools { 
+        node "nodejs-16.20"
     }
 	stages {
 		stage("Checkout") {
