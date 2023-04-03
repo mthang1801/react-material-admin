@@ -53,5 +53,18 @@ pipeline {
                 }
             }
         }
+
+        stage("Push Image"){
+            environment{
+                dockerCredential = 'docker-hub'
+            }
+            steps {
+                script {
+                    docker.withRegistry( 'https://registry.hub.docker.com', dockerCredential){
+                        dockerImage.push('latest')
+                    }
+                }
+            }
+        }
 	}	    
 }
