@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-material-admin-deployment
+  labels: 
+    app : react-material-admin
+spec: 
+  replicas: 2 
+  selector: 
+    matchLabels:
+      app : react-material-admin
+  template: 
+    metadata:
+      labels: 
+        app : react-material-admin
+  spec: 
+    containers:
+    - name: react-material-admin
+      image: mthang1801/react-material-admin:latest
+      ports: 
+      - containerPort: 3000
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata: 
+  name: react-material-admin-svc
+spec:
+  selector: 
+    app: react-material-admin
+  type: NodePort
+  ports: 
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+    nodePort: 31110
