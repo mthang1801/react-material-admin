@@ -6,7 +6,7 @@ def getBranchName(){
 
 pipeline {
 	agent any 
-    tools tools {nodejs "nodejs-16.20"}
+    tools { nodejs "nodejs-16.20" }
 	stages {
 		stage("Checkout") {
 			steps {
