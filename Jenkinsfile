@@ -1,12 +1,19 @@
 
-def buildUser = ''
 def getBranchName(){
     return scm.branches[0].name;
 }
 
+
 pipeline {
 	agent any 
     tools { nodejs "nodejs-16.20" }
+
+    environment{
+        buildUser = ''        
+        dockerImage = ''
+        dockerImageName = 'react-material-admin'
+    }
+
 	stages {
 		stage("Checkout") {
 			steps {
@@ -39,5 +46,12 @@ pipeline {
 			}			
 		}  
 
-	}	
+        stage("Build Image") {
+            steps{ 
+                script {
+                    dockerImage = docker.build dockerImageName
+                }
+            }
+        }
+	}	    
 }
