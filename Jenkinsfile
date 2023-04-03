@@ -5,7 +5,11 @@ def getBranchName(){
 }
 
 pipeline {
-	agent any 
+	agent {
+        docker {
+            image 'node:6-alpine'
+        }
+    }
 	stages {
 		stage("Checkout") {
 			steps {
@@ -30,7 +34,7 @@ pipeline {
                 }
             }
         }
-        
+
         stage("Installation") {
 			steps {
 				sh "node -v"								
